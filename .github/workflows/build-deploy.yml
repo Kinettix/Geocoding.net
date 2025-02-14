@@ -29,8 +29,9 @@ jobs:
         run: wget -qO- https://aka.ms/install-artifacts-credprovider.sh | bash
         
       - name: Configure Feed Credentials
-        run: 'export VSS_NUGET_EXTERNAL_FEED_ENDPOINTS="{\"endpointCredentials\": [{\"endpoint\":\"https://pkgs.dev.azure.com/Kinettix/DevOps/_packaging/Kinettix/nuget/v3/index.json\", \"username\":\"docker\", \"password\":\"${{ secrets.ADO_FEED_PAT }}\"}]}"'
-        
+        run: |
+          echo 'VSS_NUGET_EXTERNAL_FEED_ENDPOINTS={\"endpointCredentials\": [{\"endpoint\":\"https://pkgs.dev.azure.com/Kinettix/DevOps/_packaging/Kinettix/nuget/v3/index.json\", \"username\":\"docker\", \"password\":\"${{ secrets.ADO_FEED_PAT }}\"}]}' >> $GITHUB_ENV
+      
       - name: Add Nuget Source
         run: dotnet nuget sources Add -Name "AzureArtifacts" -Source "https://pkgs.dev.azure.com/Kinettix/DevOps/_packaging/Kinettix/nuget/v3/index.json"
         
