@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AssemblyTitle>Geocoding.net Tests</AssemblyTitle>
     <VersionPrefix>4.0.0-beta1</VersionPrefix>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <AssemblyName>Geocoding.Tests</AssemblyName>
     <PackageId>Geocoding.Tests</PackageId>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
@@ -20,19 +20,18 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Geocoding.Google\Geocoding.Google.csproj" />
-    <ProjectReference Include="..\..\src\Geocoding.Here\Geocoding.Here.csproj" />
-    <ProjectReference Include="..\..\src\Geocoding.MapQuest\Geocoding.MapQuest.csproj" />
-    <ProjectReference Include="..\..\src\Geocoding.Microsoft\Geocoding.Microsoft.csproj" />
-    <ProjectReference Include="..\..\src\Geocoding.Yahoo\Geocoding.Yahoo.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="1.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="1.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="1.1.1" />
-    <PackageReference Include="xunit" Version="2.2.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.2" />
+    <PackageReference Include="xunit" Version="2.9.3" />
   </ItemGroup>
 
   <ItemGroup>
