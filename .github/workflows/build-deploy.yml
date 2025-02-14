@@ -1,0 +1,38 @@
+name: Geocoding.Google Build and Deploy
+
+on:
+  push:
+    branches: [ "main" ]
+    
+env:
+    dotnet-version: "8.x"
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+        
+      - name: Setup dotnet ${{ env.dotnet-version }}
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.dotnet-version }}
+      
+      - name: Restore Packages
+        run: dotnet restore src/Geocoding.Google/Geocoding.Google.csproj
+        
+      - name: Pack Geocoding.Google
+        run: dotnet pack -c Release --output ./packages
+      
+      - name: Install Credential Provider
+        run: wget -qO- https://aka.ms/install-artifacts-credprovider.sh | bash
+        
+      - name: Configure Feed Credentials
+        run: 'export VSS_NUGET_EXTERNAL_FEED_ENDPOINTS="{\"endpointCredentials\": [{\"endpoint\":\"https://pkgs.dev.azure.com/Kinettix/DevOps/_packaging/Kinettix/nuget/v3/index.json\", \"username\":\"docker\", \"password\":\"${{ secrets.ADO_FEED_PAT }}\"}]}"'
+        
+      - name: Add Nuget Source
+        run: nuget sources Add -Name "AzureArtifacts" -Source "https://pkgs.dev.azure.com/Kinettix/DevOps/_packaging/Kinettix/nuget/v3/index.json"
+        
+      - name: Push Nupkg
+        run: dotnet nuget push ./packages/*.nupkg --source "AzureArtifacts" 
