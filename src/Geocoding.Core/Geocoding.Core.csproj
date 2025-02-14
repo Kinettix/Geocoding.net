@@ -5,7 +5,6 @@
     <AssemblyTitle>Geocoding.net Core</AssemblyTitle>
     <VersionPrefix>4.0.0-beta1</VersionPrefix>
     <Authors>chadly</Authors>
-    <TargetFrameworks>netstandard1.3;net46</TargetFrameworks>
     <AssemblyName>Geocoding.Core</AssemblyName>
     <PackageId>Geocoding.Core</PackageId>
     <PackageTags>geocoding;geocode;geocoder;maps;address;validation;normalization;google-maps;bing-maps;yahoo-placefinder;mapquest</PackageTags>
@@ -16,6 +15,7 @@
     <Product>Geocoding.Net</Product>
     <RepositoryUrl>https://github.com/chadly/Geocoding.net.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
