@@ -33,7 +33,7 @@ jobs:
           echo 'VSS_NUGET_EXTERNAL_FEED_ENDPOINTS={\"endpointCredentials\": [{\"endpoint\":\"https://pkgs.dev.azure.com/Kinettix/DevOps/_packaging/Kinettix/nuget/v3/index.json\", \"username\":\"docker\", \"password\":\"${{ secrets.ADO_FEED_PAT }}\"}]}' >> $GITHUB_ENV
       
       - name: Add Nuget Source
-        run: dotnet nuget sources Add -Name "AzureArtifacts" -Source "https://pkgs.dev.azure.com/Kinettix/DevOps/_packaging/Kinettix/nuget/v3/index.json"
+        run: dotnet nuget Add source -Name "AzureArtifacts" -Source "https://pkgs.dev.azure.com/Kinettix/DevOps/_packaging/Kinettix/nuget/v3/index.json"
         
       - name: Push Nupkg
         run: dotnet nuget push ./packages/*.nupkg --source "AzureArtifacts" 
