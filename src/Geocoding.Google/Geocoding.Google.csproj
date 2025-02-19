@@ -20,13 +20,4 @@
     <ProjectReference Include="..\Geocoding.Core\Geocoding.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
-    <PackageReference Include="System.Net.Http" Version="4.3.1" />
-    <PackageReference Include="System.Xml.XPath" Version="4.3.0" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)'=='net46'">
-    <Reference Include="System.Net.Http" />
-  </ItemGroup>
-
 </Project>
